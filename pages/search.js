@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Map from '../components/Map';
+
 import { format } from 'date-fns';
 import InfoCard from '../components/InfoCard';
 
@@ -12,6 +14,7 @@ function Search({ searchResults }) {
   const formattedEndDate = format(new Date(endDate), 'dd MMMM yy');
   // if null then redirect back
   const range = `${formattedStartDate} - ${formattedEndDate}`;
+
   return (
     <div className="h-screen">
       <Header placeHolder={`${location} | ${range} | ${noOfGuests}`} />
@@ -58,6 +61,9 @@ function Search({ searchResults }) {
               )
             )}
           </div>
+        </section>
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          <Map searchResults={searchResults} />
         </section>
       </main>
       <Footer />
